@@ -95,11 +95,10 @@ def lambda_handler(event, context):
             response_data = json.loads(response_body)
         
         # レスポンスを解析
-        response_body = json.loads(response['body'].read())
-        print("Bedrock response:", json.dumps(response_body, default=str))
+        print("Bedrock response:", json.dumps(response_data, default=str))
         
         # 応答の検証
-        if not response_body.get('output') or not response_body['output'].get('message') or not response_body['output']['message'].get('content'):
+        if not response_data.get('output') or not response_data['output'].get('message') or not response_data['output']['message'].get('content'):
             raise Exception("No response content from the model")
         
         # アシスタントの応答を取得
