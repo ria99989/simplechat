@@ -85,7 +85,7 @@ def lambda_handler(event, context):
         
         # Bedrock呼び出しをurllibによるPOSTに置き換え
         req = urllib.request.Request(
-            url=INFERENCE_API_URL,
+            url=MODEL_ID,
             data=json.dumps(request_payload).encode('utf-8'),
             headers={'Content-Type': 'application/json'},
             method='POST'
